@@ -11,8 +11,8 @@ import getMuiTheme                                   from 'material-ui/styles/ge
 /* Babble */
 import TextInput                                     from './components/text_input';
 import Button                                        from './components/button';
-import MainMenu                                      from './components/main_menu';
 import BestTopic                                     from './components/best_topic';
+import UserMenu                                      from './components/user_menu';
 
 injectTapEventPlugin();
 
@@ -31,17 +31,7 @@ const styles = ({
         margin : '0 auto',
         paddingBottom : 200,
         paddingTop : 100,
-        backgroundImage : 'url("images/intro-bg.jpg")',
-    },
-    menuStyle : {
-        backgroundColor : 'rgb(051,255,255)',
-        display : 'flex',
-        justifyContent : 'space-between',
-        boxSizing : 'border-box',
-        position : 'fixed',
-        width : '100%',
-        top : 0,
-    },
+    }
 });
 
 
@@ -94,8 +84,8 @@ class App extends React.Component{
             <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
                 <div>
                     <div>
-                        <div style = {styles.menuStyle}>
-                            <MainMenu />
+                        <div>
+                            <UserMenu/>
                         </div>
                         <div style = {styles.contentStyle}>
                             <TextInput

@@ -18,7 +18,7 @@ const styles = {
 
 const tilesData = [
   {
-    img: 'images/grid-list/topic1.jpg',
+    img: '../img/ez.jpg',
     title: 'title1',
     author: 'jill111',
     featured: true,
@@ -86,7 +86,7 @@ const BestTopic = () => (
           cols={tile.featured ? 2 : 1}
           rows={tile.featured ? 2 : 1}
         >
-          <img src={tile.img} />
+          <img src={'../img'} />
         </GridTile>
       ))}
     </GridList>
