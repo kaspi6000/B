@@ -1,18 +1,20 @@
 /* React */
-import React                                         from 'react';
-import ReactDOM                                      from 'react-dom';
-import injectTapEventPlugin                          from 'react-tap-event-plugin';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import React                                               from 'react';
+import ReactDOM                                            from 'react-dom';
+import injectTapEventPlugin                                from 'react-tap-event-plugin';
+import { Router, Route, browserHistory, IndexRoute, Link } from 'react-router';
 
 /* material-ui */
-import MuiThemeProvider                              from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme                                   from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider                                    from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme                                         from 'material-ui/styles/getMuiTheme';
+import FlatButton from 'material-ui/FlatButton';
 
 /* Babble */
-import TextInput                                     from './components/text_input';
-import Button                                        from './components/button';
-import BestTopic                                     from './components/best_topic';
-import UserMenu                                      from './components/user_menu';
+import TextInput                                           from './components/text_input';
+import Button                                              from './components/button';
+import BestTopic                                           from './components/best_topic';
+import UserMenu                                            from './components/user_menu';
+import ChatApp                                             from './components/chat';
 
 injectTapEventPlugin();
 
@@ -98,6 +100,9 @@ class App extends React.Component{
                             />
                         </div>
                     </div>
+                    <Link to = {"/chat"}>
+                        Chat start!
+                    </Link>
                     <div>
                         <BestTopic/>
                     </div>
@@ -107,4 +112,10 @@ class App extends React.Component{
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('babble'));
+ReactDOM.render(
+    <Router history = { browserHistory } >
+        <Route path="/" component={App} />
+        <Route path="/chat" component={ChatApp} />
+    </Router>
+    ,
+    document.getElementById('babble'));
