@@ -1,4 +1,4 @@
-import React     from 'react';
+import React    from 'react';
 
 class UsersList extends React.Component{
 
@@ -262,26 +262,6 @@ class ChatApp extends React.Component{
                     onChangeName={this.handleChangeName}
                 />
             </div>
-        );
-    }
-}
-
-class Chat extends React.Component{
-
-    render(){
-
-        return(
-
-            <div>
-                <TextField
-                    id = "messages"
-                    floatingLabelText = "your Message !"
-                />
-                <Button
-                    label = "SEND"
-                />
-            </div>
-
         );
     }
 }

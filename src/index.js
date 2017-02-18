@@ -7,7 +7,7 @@ import { Router, Route, browserHistory, IndexRoute, Link } from 'react-router';
 /* material-ui */
 import MuiThemeProvider                                    from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme                                         from 'material-ui/styles/getMuiTheme';
-import FlatButton from 'material-ui/FlatButton';
+import FlatButton                                          from 'material-ui/FlatButton';
 
 /* Babble */
 import TextInput                                           from './components/text_input';
@@ -15,6 +15,7 @@ import Button                                              from './components/bu
 import BestTopic                                           from './components/best_topic';
 import UserMenu                                            from './components/user_menu';
 import ChatApp                                             from './components/chat';
+import CONFIG                                              from './models/m-config.js';
 
 injectTapEventPlugin();
 
@@ -104,7 +105,9 @@ class App extends React.Component{
                         Chat start!
                     </Link>
                     <div>
-                        <BestTopic/>
+                        <BestTopic
+                            onClick = {this.onClick}
+                        />
                     </div>
                 </div>
             </MuiThemeProvider>

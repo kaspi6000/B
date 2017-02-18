@@ -2,6 +2,7 @@ import React from 'react';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import CONFIG from '../models/m-config.js';
 
 const styles = {
   root: {
@@ -18,52 +19,52 @@ const styles = {
 
 const tilesData = [
   {
-    img: '../img/ez.jpg',
-    title: 'title1',
-    author: 'jill111',
+    img: 'img/park.jpg',
+    title: '정치',
+    author: 'kang',
     featured: true,
   },
   {
-    img: 'images/grid-list/burger-827309_640.jpg',
-    title: 'title2',
-    author: 'pashminu',
+    img: 'img/choi.jpg',
+    title: '정치',
+    author: 'kang',
   },
   {
-    img: 'images/grid-list/camera-813814_640.jpg',
-    title: 'title3',
-    author: 'Danson67',
+    img: 'img/kim.jpg',
+    title: '정치',
+    author: 'kang',
   },
   {
-    img: 'images/grid-list/morning-819362_640.jpg',
-    title: 'title4',
-    author: 'fancycrave1',
+    img: 'img/cancel.png',
+    title: '경제',
+    author: 'kang',
     featured: true,
   },
   {
-    img: 'images/grid-list/hats-829509_640.jpg',
-    title: 'title5',
-    author: 'Hans',
+    img: 'img/ez.jpg',
+    title: '경제',
+    author: 'kang',
   },
   {
-    img: 'images/grid-list/honey-823614_640.jpg',
-    title: 'title6',
-    author: 'fancycravel',
+    img: 'img/kt.jpg',
+    title: '경제',
+    author: 'kang',
   },
   {
-    img: 'images/grid-list/vegetables-790022_640.jpg',
-    title: 'title7',
-    author: 'jill111',
+    img: 'img/menu.svg',
+    title: '연예',
+    author: 'kang',
     featured : true,
   },
   {
-    img: 'images/grid-list/water-plant-821293_640.jpg',
-    title: 'title8',
-    author: 'BkrmadtyaKarki',
+    img: 'img/vi.jpg',
+    title: '연예',
+    author: 'kang',
   },
   {
-    img: 'images/grid-list/water-plant-821293_630.jpg',
-    title: 'title9',
-    author: 'kkag',
+    img: 'img/iu.jpg',
+    title: '연예',
+    author: 'kang',
   },
 ];
 
@@ -86,7 +87,9 @@ const BestTopic = () => (
           cols={tile.featured ? 2 : 1}
           rows={tile.featured ? 2 : 1}
         >
-          <img src={'../img'} />
+          <img
+            src={ CONFIG.backendUrl + tile.img }
+          />
         </GridTile>
       ))}
     </GridList>

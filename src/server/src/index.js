@@ -2,76 +2,65 @@ require( 'babel-register' )({
     preset: [ 'react' ]
 });
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var mysql = require('mysql');
-var path = require('path');
-path.resolve('../../some/path/to/file.txt');
-path.resolve(__dirname+'../../some/path/to/file.txt');
+import http       from 'http';
+import express    from 'express';
+import mysql      from 'mysql';
+import bodyParser from 'body-parser';
 
-let con = mysql.createConnection({
-    host : "localhost",
-    user : "root",
-    password : "1111",
-    database : "babble"
+import path      from 'path';
+
+let app = express();
+
+app.use( bodyParser.json({ limit: '100mb' }));
+app.use( bodyParser.urlencoded({ limit: '100mb', extended: true }));
+app.use( express.static( __dirname + '/../' ));
+
+let connection = mysql.createConnection({
+
+    host                : 'localhost',
+    user                : 'root',
+    password            : '1111',
+    database            : 'babble',
+    multipleStatements  : true,
+
 });
 
-con.query("SELECT * FROM babble.user", function(err, rows){
-    if(err) throw err;
-    console.log(rows);
-});
+function handleDisconnect () {
 
-con.query("INSERT INTO babble.user VALUES (NULL, '', NULL)", function(err, res){
-    if(err) throw err;
-    console.log(res);
-});
+    let connection = mysql.createConnection({
 
-con.query("SELECT * FROM babble.chat", function(err, rows){
-    if(err) throw err;
-    console.log(rows);
-});
+        host                : 'localhost',
+        user                : 'root',
+        password            : '1111',
+        database            : 'babble',
+        multipleStatements  : true,
 
-con.query("INSERT INTO babble.chat VALUES (NULL, 1, '', CURRENT_TIMESTAMP())", function(err, res){
-    if(err) throw err;
-    console.log(res);
-});
+    });
 
-function chat(msg){
-    con.query(
-        "INSERT INTO babble.chat VALUES (NULL, 1, ?, CURRENT_TIMESTAMP())",
-        [ msg ]
-    );
+    connection.connect(function(err) {
+        if(err) {
+            console.log('error when connecting to db:', err);
+            setTimeout(handleDisconnect, 2000);
+        }
+    });
+
+    connection.on('error', function(err) {
+        console.log('db error', err);
+        if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    });
 }
 
-function user(username){
-    con.query(
-        "INSERT INTO babble.user VALUES (NULL, ?, NULL)",
-        [username]
-    );
-}
+handleDisconnect();
 
-app.get('/', function(req, res){
-    res.sendFile(path.resolve('temp/index.html'));
-  // res.sendFile(__dirname + '../../components/chat.js');
-});
+let server = app.listen( 3000, '0.0.0.0', function () {
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-    chat(msg);
-    console.log('chatMessage', msg);
-  });
-});
+    let host = server.address().address;
+    let port = server.address().port;
 
-io.on('connection', function(socket){
-  socket.on('user name', function(username){
-    io.emit('user name', username);
-    user(username);
-    console.log('Username', username);
-  });
-});
+    console.log( "Listening at http://%s:%s", host, port );
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
 });
