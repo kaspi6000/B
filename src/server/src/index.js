@@ -6,14 +6,33 @@ import http       from 'http';
 import express    from 'express';
 import mysql      from 'mysql';
 import bodyParser from 'body-parser';
-
 import path      from 'path';
+import mongoose from 'mongoose';
 
+/* account */
+import api from '../routes';
+import Account from '../routes/account';
+
+var cors = require('cors');
 let app = express();
 
+const db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', () => { console.log('Connected to mongodb server'); });
+// mongoose.connect('mongodb://username:password@host:port/database=');
+mongoose.connect('mongodb://localhost/babble');
+
+app.use(cors());
 app.use( bodyParser.json({ limit: '100mb' }));
 app.use( bodyParser.urlencoded({ limit: '100mb', extended: true }));
 app.use( express.static( __dirname + '/../' ));
+app.use( '/', Account );
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something error!');
+});
+app.all( '*',  function( req, res, next ) {      res.setHeader( "Access-Control-Allow-Origin", "*" );     res.setHeader( "Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS" );     res.setHeader( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );     next();  })
+
 
 let connection = mysql.createConnection({
 

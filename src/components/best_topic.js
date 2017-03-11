@@ -14,6 +14,7 @@ const styles = {
     width: 800,
     height: 450,
     overflowY: '',
+    marginTop : 100
   },
 };
 

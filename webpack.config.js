@@ -1,4 +1,5 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 
 module.exports = {
 	entry: __dirname + "/src/index.js",
@@ -36,5 +37,9 @@ module.exports = {
 	    port: 8080,
 	    historyApiFallback: true,
 	},
+
+	resolve: {
+        root: path.resolve('./src')
+    },
 
 };
