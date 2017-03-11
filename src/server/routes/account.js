@@ -23,13 +23,15 @@ router.post('/signup', (req, res) => {
     }
 
     // CHECK USER EXISTANCE
-    Account.findOne({ userid: req.body.userid }, (err, exists) => {
+    Account.findOne({ userid : req.body.userid }, (err, exists) => {
+
         if (err) throw err;
         if(exists){
             return res.status(409).json({
                 error: "Please one more",
                 code: 3
             });
+
         }
 
         // CREATE ACCOUNT
@@ -50,8 +52,8 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/signin', (req, res) => {
-    res.send(true);
-    res.setHeader('Access-Control-Allow-Origin', '**');     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,contenttype'); // If needed     res.setHeader('Access-Control-Allow-Credentials', true);
+
+    res.setHeader('Access-Control-Allow-Origin', '*');     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,contenttype'); // If needed     res.setHeader('Access-Control-Allow-Credentials', true);
 
     if(typeof req.body.password !== "string") {
         return res.status(401).json({
@@ -82,6 +84,7 @@ router.post('/signin', (req, res) => {
 
         // ALTER SESSION
         let session = req.session;
+        console.log(req.session);
         session.loginInfo = {
             _id: account._id,
             userid: account.userid

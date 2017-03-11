@@ -8,7 +8,7 @@ import CONFIG                                              from './models/m-conf
 import { App, Home, Login, Register }                      from 'containers';
 import { ChatApp }                                         from 'components';
 
-import reducers from './reducers';
+import reducers from 'reducers';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -20,9 +20,9 @@ ReactDOM.render(
         <Router history = { browserHistory } >
             <Route path = "/" component = {App}>
                 <IndexRoute component = {Home} />
-                <Route path = "/chat" component = {ChatApp} />
-                <Route path = "/login" component = {Login} />
-                <Route path = "/register" component = {Register} />
+                <Route path = "chat" component = {ChatApp} />
+                <Route path = "login" component = {Login} />
+                <Route path = "register" component = {Register} />
             </Route>
         </Router>
     </Provider>,

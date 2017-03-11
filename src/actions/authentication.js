@@ -4,7 +4,11 @@ import {
     AUTH_LOGIN_FAILURE,
     AUTH_REGISTER,
     AUTH_REGISTER_SUCCESS,
-    AUTH_REGISTER_FAILURE
+    AUTH_REGISTER_FAILURE,
+    AUTH_GET_STATUS,
+    AUTH_GET_STATUS_SUCCESS,
+    AUTH_GET_STATUS_FAILURE,
+    AUTH_LOGOUT
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -52,12 +56,12 @@ export function loginFailure() {
     };
 }
 
-export function registerRequest(username, password) {
+export function registerRequest(userid, password) {
     return (dispatch) => {
         // Inform Register API is starting
         dispatch(register());
 
-        return axios.post('http://localhost:3000/signup', { username, password })
+        return axios.post('http://localhost:3000/signup', { userid, password })
         .then((response) => {
             dispatch(registerSuccess());
         }).catch((error) => {
@@ -82,5 +86,53 @@ export function registerFailure(error) {
     return {
         type: AUTH_REGISTER_FAILURE,
         error
+    };
+}
+
+export function getStatusRequest() {
+    return (dispatch) => {
+        // inform Get Status API is starting
+        dispatch(getStatus());
+
+        return axios.get('http://localhost:3000/getInfo')
+        .then((response) => {
+            dispatch(getStatusSuccess(response.data.info.userid));
+        }).catch((error) => {
+            dispatch(getStatusFailure());
+        });
+    };
+}
+
+export function getStatus() {
+    return {
+        type: AUTH_GET_STATUS
+    };
+}
+
+export function getStatusSuccess(userid) {
+    return {
+        type: AUTH_GET_STATUS_SUCCESS,
+        userid
+    };
+}
+
+export function getStatusFailure() {
+    return {
+        type: AUTH_GET_STATUS_FAILURE
+    };
+}
+
+export function logoutRequest() {
+    return (dispatch) => {
+        return axios.post('http://localhost:3000/logout')
+        .then((response) => {
+            dispatch(logout());
+        });
+    };
+}
+
+export function logout() {
+    return {
+        type: AUTH_LOGOUT
     };
 }

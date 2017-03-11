@@ -8,6 +8,7 @@ import mysql      from 'mysql';
 import bodyParser from 'body-parser';
 import path      from 'path';
 import mongoose from 'mongoose';
+import session from 'express-session';
 
 /* account */
 import api from '../routes';
@@ -31,8 +32,11 @@ app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something error!');
 });
-app.all( '*',  function( req, res, next ) {      res.setHeader( "Access-Control-Allow-Origin", "*" );     res.setHeader( "Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS" );     res.setHeader( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );     next();  })
-
+app.use(session({
+    secret: 'BabBle$1$234',
+    resave: false,
+    saveUninitialized: true
+}));
 
 let connection = mysql.createConnection({
 
