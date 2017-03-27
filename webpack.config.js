@@ -2,7 +2,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-	entry: __dirname + "/src/index.js",
+	entry: [__dirname + "/src/index.js", './src/style.css'],
 	output: {
 		path: __dirname,
 		filename: "bundle.js",
@@ -18,10 +18,10 @@ module.exports = {
 			query: {
 				presets: [ 'es2015', 'es2016', 'react', 'react-hmre' ]
 			}
-		}, {
-			 test: /\.scss$/,
-			 loaders: ['style', 'css', 'sass']
-		 }]
+		},{
+                test: /\.css$/,
+                loader: 'style!css-loader'
+        }]
 	},
 
 	plugins: [

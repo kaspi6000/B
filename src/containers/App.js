@@ -34,16 +34,15 @@ class App extends React.Component {
         // check whether this cookie is valid or not
         this.props.getStatusRequest().then(
             () => {
-                console.log(this.props.status);
                 // if session is not valid
                 if(!this.props.status.valid) {
                     // logout the session
                     loginData = {
                         isLoggedIn: false,
-                        username: ''
+                        userid: ''
                     };
 
-                    document.cookie='key=' + btoa(JSON.stringify(loginData));
+                    document.cookie = 'key=' + btoa(JSON.stringify(loginData));
 
                     // and notify
                     let $toastContent = $('<span style="color: #FFB4BA">Your session is expired, please log in again</span>');
@@ -62,7 +61,7 @@ class App extends React.Component {
                 // EMPTIES THE SESSION
                 let loginData = {
                     isLoggedIn: false,
-                    username: ''
+                    userid: ''
                 };
 
                 document.cookie = 'key=' + btoa(JSON.stringify(loginData));
@@ -77,8 +76,7 @@ class App extends React.Component {
 
         return (
             <div>
-                {isAuth ? undefined : <Header isLoggedIn={this.props.status.isLoggedIn}
-                                                onLogout={this.handleLogout}/>}
+                {isAuth ? undefined : <Header isLoggedIn={this.props.status.isLoggedIn} onLogout={this.handleLogout}/>}
                 { this.props.children }
             </div>
         );

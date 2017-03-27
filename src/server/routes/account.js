@@ -84,11 +84,13 @@ router.post('/signin', (req, res) => {
 
         // ALTER SESSION
         let session = req.session;
-        console.log(req.session);
-        session.loginInfo = {
+        let test = req.body;
+
+        test.loginData = {
             _id: account._id,
             userid: account.userid
         };
+        console.log(req.body.loginData);
 
         // RETURN SUCCESS
         return res.json({
@@ -98,17 +100,19 @@ router.post('/signin', (req, res) => {
 });
 
 router.get('/getinfo', (req, res) => {
-    if(typeof req.session.loginInfo === "undefined") {
+    if(typeof req.body.loginData === "undefined") {
+        console.log(req.body.loginData);
         return res.status(401).json({
             error: 1
         });
     }
 
-    res.json({ info: req.session.loginInfo });
+    res.json({ info: req.body.loginData });
 });
 
 router.post('/logout', (req, res) => {
-    req.session.destroy(err => { if(err) throw err; });
+    req.session = null;
+    // req.session.destroy(err => { if(err) throw err; });
     return res.json({ sucess: true });
 });
 

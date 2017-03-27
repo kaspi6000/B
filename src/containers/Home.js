@@ -1,11 +1,11 @@
 import React from 'react';
-import { BestTopic } from 'components';
+import { BestTopic, RealChat } from 'components';
 
 class Home extends React.Component {
     render() {
         return (
             <div>
-                hsefsef
+                <BestTopic/>
             </div>
         );
     }

@@ -1,100 +1,42 @@
 import React from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import CONFIG from '../models/m-config.js';
+import { Link } from 'react-router';
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 800,
-    height: 450,
-    overflowY: '',
-    marginTop : 100
-  },
-};
+class ContentsCard extends React.Component {
+    render(){
+        return(
+            <div style = {{margin : '20px 0px 20px 20px', maxWidth : '100%', height : 'auto', float : 'left'}} className="card small">
+                <div style = {{zIndex : '2'}} className="card-image waves-effect waves-block waves-light">
+                    <img style = {{maxWidth : 300, height : 300}} className="activator" src={this.props.value}/>
+                </div>
+                <div style = {{zIndex : '1'}} className="card-content">
+                    <span className="card-title activator grey-text text-darken-4">{this.props.title}<i className="material-icons right">more_vert</i></span>
+                    <p><Link to = {this.props.chatUrl}>Chatting start!</Link></p>
+                </div>
+                <div className="card-reveal">
+                    <span className="card-title grey-text text-darken-4">{this.props.title}<i className="material-icons right">close</i></span>
+                    <p>{this.props.text}</p>
+                </div>
+            </div>
+        );
+    }
+}
 
-const tilesData = [
-  {
-    img: 'img/park.jpg',
-    title: '정치',
-    author: 'kang',
-    featured: true,
-  },
-  {
-    img: 'img/choi.jpg',
-    title: '정치',
-    author: 'kang',
-  },
-  {
-    img: 'img/kim.jpg',
-    title: '정치',
-    author: 'kang',
-  },
-  {
-    img: 'img/cancel.png',
-    title: '경제',
-    author: 'kang',
-    featured: true,
-  },
-  {
-    img: 'img/ez.jpg',
-    title: '경제',
-    author: 'kang',
-  },
-  {
-    img: 'img/kt.jpg',
-    title: '경제',
-    author: 'kang',
-  },
-  {
-    img: 'img/menu.svg',
-    title: '연예',
-    author: 'kang',
-    featured : true,
-  },
-  {
-    img: 'img/vi.jpg',
-    title: '연예',
-    author: 'kang',
-  },
-  {
-    img: 'img/iu.jpg',
-    title: '연예',
-    author: 'kang',
-  },
-];
+class BestTopic extends React.Component{
 
-const BestTopic = () => (
-  <div style={styles.root}>
-    <GridList
-      cols={4}
-      cellHeight={200}
-      padding={1}
-      style={styles.gridList}
-    >
-      {tilesData.map((tile) => (
-        <GridTile
-          key={tile.img}
-          title={tile.title}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-          actionPosition="left"
-          titlePosition="top"
-          titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-          cols={tile.featured ? 2 : 1}
-          rows={tile.featured ? 2 : 1}
-        >
-          <img
-            src={ CONFIG.backendUrl + tile.img }
-          />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-);
+    constructor(props){
+        super(props);
+    }
+    render(){
+
+        return(
+            <div style = {{marginLeft : 300}}>
+                <ContentsCard title = "박근혜 탄핵" chatUrl = "/realchat" value = {CONFIG.backendUrl + "img/park.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
+                <ContentsCard title = "최순실 게이트" chatUrl = "/" value = {CONFIG.backendUrl + "img/choi.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
+                <ContentsCard title = "김정남 암살" chatUrl = "/" value = {CONFIG.backendUrl + "img/kim.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
+            </div>
+        );
+    }
+}
 
 export default BestTopic;

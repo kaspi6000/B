@@ -78,7 +78,7 @@ export function register() {
 
 export function registerSuccess() {
     return {
-        type: AUTH_REGISTER_SUCCESS,
+        type: AUTH_REGISTER_SUCCESS
     };
 }
 
@@ -94,7 +94,7 @@ export function getStatusRequest() {
         // inform Get Status API is starting
         dispatch(getStatus());
 
-        return axios.get('http://localhost:3000/getInfo')
+        return axios.get('http://localhost:3000/getinfo')
         .then((response) => {
             dispatch(getStatusSuccess(response.data.info.userid));
         }).catch((error) => {

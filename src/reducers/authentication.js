@@ -1,4 +1,4 @@
-import * as types from '../actions/ActionTypes';
+import * as types from 'actions/ActionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
@@ -17,8 +17,9 @@ const initialState = {
 };
 
 export default function authentication(state, action) {
-    if(typeof state === "undefined")
+    if(typeof state === "undefined") {
         state = initialState;
+    }
 
     switch(action.type) {
         /* LOGIN */
@@ -74,7 +75,7 @@ export default function authentication(state, action) {
             return update(state, {
                 status: {
                     valid: { $set: true },
-                    currentUser: { $set: action.username }
+                    currentUser: { $set: action.userid }
                 }
             });
         case types.AUTH_GET_STATUS_FAILURE:
