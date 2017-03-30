@@ -11,6 +11,8 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+import connectMongo from 'connect-mongo';
+import passport from 'passport';
 
 /* account */
 import api from '../routes';
@@ -22,6 +24,8 @@ let app = express();
 
 var server = http.createServer(app);
 var io = require('socket.io')(server);
+
+const MongoStore = connectMongo(session);
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -35,6 +39,7 @@ app.use(function(err, req, res, next) {
 });
 app.use(cookieParser());
 
+mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', () => { console.log('Connected to mongodb server'); });
@@ -45,6 +50,13 @@ app.use(session({
     secret: 'BabBle$1$234',
     resave: false,
     saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60
+    },
+    store: new MongoStore({
+        mongooseConnection : mongoose.connection,
+        ttl : 60 * 60
+    })
 }));
 
 console.log(session);

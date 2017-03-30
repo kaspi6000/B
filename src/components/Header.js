@@ -22,21 +22,23 @@ class Header extends React.Component {
        );
 
         return (
-            <nav>
-                <div className="nav-wrapper blue darken-1">
-                    <Link to="/" className="brand-logo center">BABBEL</Link>
+            <div className = "navbar-fixed">
+                <nav>
+                    <div className="nav-wrapper blue-grey darken-4">
+                        <Link to="/" className="brand-logo center">BABBEL</Link>
 
-                    <ul>
-                        <li><a><i className="material-icons">search</i></a></li>
-                    </ul>
-
-                    <div className="right">
                         <ul>
-                            { this.props.isLoggedIn ? logoutButton : loginButton }
+                            <li><a><i className="material-icons">search</i></a></li>
                         </ul>
+
+                        <div className="right">
+                            <ul>
+                                { this.props.isLoggedIn ? logoutButton : loginButton }
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         );
     }
 }

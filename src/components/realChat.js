@@ -87,11 +87,11 @@ class RealChat extends React.Component {
 class ContentsCard extends React.Component {
     render(){
         return(
-            <div style = {{margin : '20px 0px 20px 20px', width : '550px', height : '580px', float : 'left'}} className="card big">
-                <div style = {{zIndex : '2'}} className="card-image waves-effect waves-block waves-light">
-                    <img style = {{width : '550px', height : '500px'}} className="activator" src={this.props.value}/>
+            <div style = {{margin : '20px 0px 20px 20px', width : '550px', height : '500px', float : 'left'}} className="card big">
+                <div className="card-image waves-effect waves-block waves-light">
+                    <img style = {{width : '550px', height : '420px'}} className="activator" src={this.props.value}/>
                 </div>
-                <div style = {{zIndex : '1'}} className="card-content">
+                <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">{this.props.title}<i className="material-icons right">more_vert</i></span>
 
                 </div>

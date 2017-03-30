@@ -3,6 +3,11 @@ import Account from '../models/account';
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.json({sessionID: req.sessionID, session: req.session});
+    console.log(sessionID);
+});
+
 router.post('/signup', (req, res) => {
     // CHECK USERNAME FORMAT
     let useridRegex = /^[a-z0-9]+$/;
@@ -86,11 +91,11 @@ router.post('/signin', (req, res) => {
         let session = req.session;
         let test = req.body;
 
-        test.loginData = {
+        session = {
             _id: account._id,
             userid: account.userid
         };
-        console.log(req.body.loginData);
+        console.log(req.session);
 
         // RETURN SUCCESS
         return res.json({
@@ -100,14 +105,13 @@ router.post('/signin', (req, res) => {
 });
 
 router.get('/getinfo', (req, res) => {
-    if(typeof req.body.loginData === "undefined") {
-        console.log(req.body.loginData);
+    if(typeof req.session === "undefined") {
         return res.status(401).json({
             error: 1
         });
     }
 
-    res.json({ info: req.body.loginData });
+    res.json({ info: req.session });
 });
 
 router.post('/logout', (req, res) => {
