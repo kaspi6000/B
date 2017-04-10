@@ -2,6 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="1057825330741-d1qd67jl5sljc1ss6fdk43s2g2ogcj94.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"  media="screen,projection"/ />
         <title></title>
@@ -10,7 +13,23 @@
         </style>
     </head>
     <body>
-        <div id = "babble"></div>
+        <div id = "babble">
+        <script>
+            function onSignIn(googleUser) {
+                // Useful data for your client-side scripts:
+                var profile = googleUser.getBasicProfile();
+                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                console.log('Full Name: ' + profile.getName());
+                console.log('Given Name: ' + profile.getGivenName());
+                console.log('Family Name: ' + profile.getFamilyName());
+                console.log("Image URL: " + profile.getImageUrl());
+                console.log("Email: " + profile.getEmail());
+                // The ID token you need to pass to your backend:
+                var id_token = googleUser.getAuthResponse().id_token;
+                console.log("ID Token: " + id_token);
+            };
+        </script>
+        </div>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
         <script src = "bundle.js"></script>

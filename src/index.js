@@ -6,7 +6,8 @@ import { Router, Route, browserHistory, IndexRoute, Link } from 'react-router';
 /* Babble */
 import CONFIG                                              from './models/m-config.js';
 import { App, Home, Login, Register }                      from 'containers';
-import { ChatApp, RealChat, About, Feedback }              from 'components';
+import { ChatApp, About, Feedback, GoogleLogin }           from 'components';
+import { Contents1, Contents2, Contents3 }                 from 'components/realChat';
 
 import reducers from 'reducers';
 import { Provider } from 'react-redux';
@@ -23,7 +24,10 @@ ReactDOM.render(
                 <Route path = "chat" component = {ChatApp} />
                 <Route path = "login" component = {Login} />
                 <Route path = "register" component = {Register} />
-                <Route path = "realchat" component = {RealChat} />
+                <Route path = "contents1" component = {Contents1} />
+                <Route path = "contents2" component = {Contents2} />
+                <Route path = "contents3" component = {Contents3} />
+                <Route path = "google" component = {GoogleLogin} />
                 <Route path = "about" component = {About} />
                 <Route path = "feedback" component = {Feedback} />
             </Route>

@@ -27,13 +27,14 @@ class BestTopic extends React.Component{
     constructor(props){
         super(props);
     }
+
     render(){
 
         return(
             <div className = "topic">
-                <ContentsCard title = "박근혜 탄핵" chatUrl = "/realchat" value = {CONFIG.backendUrl + "img/park.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
-                <ContentsCard title = "최순실 게이트" chatUrl = "/" value = {CONFIG.backendUrl + "img/choi.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
-                <ContentsCard title = "김정남 암살" chatUrl = "/" value = {CONFIG.backendUrl + "img/kim.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
+                <ContentsCard title = "박근혜 탄핵" chatUrl = "/contents1" value = {CONFIG.backendUrl + "img/park.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
+                <ContentsCard title = "최순실 게이트" chatUrl = "/contents2" value = {CONFIG.backendUrl + "img/choi.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
+                <ContentsCard title = "김정남 암살" chatUrl = "/contents3" value = {CONFIG.backendUrl + "img/kim.jpg"} text = "agfgasenkflaseknflsaerklsnerl" />
                 <ContentsCard title = "Test" chatUrl = "/" value = {CONFIG.backendUrl + "img/cancel.png"} text = "text input" />
                 <ContentsCard title = "Test" chatUrl = "/" value = {CONFIG.backendUrl + "img/cancel.png"} text = "text input" />
                 <ContentsCard title = "Test" chatUrl = "/" value = {CONFIG.backendUrl + "img/cancel.png"} text = "text input" />

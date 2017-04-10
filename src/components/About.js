@@ -24,7 +24,7 @@ class About extends React.Component{
                         네.. ㅠㅠ 개발중에 있으니 시간을 주세요.
                     </div>
                     <div className = "container-title">
-                        현재 Babble 상황...
+                        현재 Babble 현황 . . .
                     </div>
                     <div className = "container-font" style = {{marginBottom : '150px'}}>
                         지금 각종 오류들을 아직 잡지 못한상태입니다...신속히 해결할게요..ㅠ<br/>

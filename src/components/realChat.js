@@ -13,16 +13,21 @@ class RealChat extends React.Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
+    componentWillMount(){
+
+        if (self.name != 'reload') {
+            self.name = 'reload';
+            self.location.reload(true);
+        }else
+        self.name = '';
+    }
+
     componentDidMount(e){
 
         function getCookie(username){
             var cookie = document.cookie;
             console.log(cookie.username);
         }
-
-        socket.on('connect', function(){
-            socket.emit('guestjoin', 'lobby');
-        });
 
         socket.on('recvmsg', function (username, data) {
             $('#conversation').append('<b>' + username + ' : </b> ' + data + '<br>');
@@ -56,18 +61,6 @@ class RealChat extends React.Component {
 
         return(
             <div>
-                <div style = {{marginLeft : '100px'}}>
-                    <ContentsCard
-                        title = "박근혜 탄핵"
-                        value = {CONFIG.backendUrl + "img/park.jpg"}
-                        text = "박근혜 대통령 탄핵은 최순실 게이트, 비선실세 의혹, 대기업 뇌물 의혹 등의 박근혜 대통령의 헌법에 위배되는 범죄 의혹을 사유로 대한민국 국회에서 야당(더불어민주당, 국민의당, 정의당)과 무소속 의원들이 발의한 대통령 탄핵 소추를 발의해 헌법재판소에서 탄핵을 인용한 것이다. 이는 대한민국 헌정 사상 노무현 대통령 탄핵 소추(2004년 3월 12일)에 이어 두 번째로 국회가 현직 대통령에 대한 탄핵 소추를 발의한 것이다.
-
-                        2016년 12월 9일, 탄핵 소추안이 국회에서 가결되었다. 같은 날 오후 7시 3분, 박근혜 대통령은 국회로부터 탄핵 소추 의결서를 받는 동시에 헌법상 대통령 권한 행사가 정지되었다. 이로 인해 앞과 같은 시각부터 황교 안 국무총리가 대통령 권한대행을 맡게 되었다.
-
-                        박근혜 대통령에 대한 탄핵 심판은 헌법재판소의 판결에서 결정되고, 판결까지는 최대 180일이 걸리며, 박한철 전 소장(2017년 1월 31일 퇴임)이 퇴임한 관계로 8명의 재판관 중 6명 이상이 찬성해야 탄핵이 최종 확정된다.
-                        2017년 3월 10일, 헌법재판소는 재판관 전원일치로 박근혜 대통령 탄핵 소추안을 인용하여 박근혜는 대통령직에서 파면되었다"
-                     />
-                </div>
                 <div className = "chat">
                     <div>
                         <div id = "userlist" className = "chat-name" />
@@ -104,5 +97,85 @@ class ContentsCard extends React.Component {
     }
 }
 
+export class Contents1 extends React.Component{
 
-export default RealChat;
+    componentDidMount(e){
+
+        socket.on('connect', function(){
+            socket.emit('guestjoin', 'Park');
+        });
+
+    }
+
+    render(){
+        return(
+            <div>
+                <div style = {{marginLeft : '100px'}}>
+                    <ContentsCard
+                        title = "박근혜 탄핵"
+                        value = {CONFIG.backendUrl + "img/park.jpg"}
+                        text = "박근혜 대통령 탄핵은 최순실 게이트, 비선실세 의혹, 대기업 뇌물 의혹 등의 박근혜 대통령의 헌법에 위배되는 범죄 의혹을 사유로 대한민국 국회에서 야당(더불어민주당, 국민의당, 정    의당)과 무소속 의원들이 발의한 대통령 탄핵 소추를 발의해 헌법재판소에서 탄핵을 인용한 것이다. 이는 대한민국 헌정 사상 노무현 대통령 탄핵 소추(2004년 3월 12일)에 이어 두 번째로 국회    가 현직 대통령에 대한 탄핵 소추를 발의한 것이다.
+
+                        2016년 12월 9일, 탄핵 소추안이 국회에서 가결되었다. 같은 날 오후 7시 3분, 박근혜 대통령은 국회로부터 탄핵 소추 의결서를 받는 동시에 헌법상 대통령 권한 행사가 정지되었다. 이로 인해   앞과 같은 시각부터 황교 안 국무총리가 대통령 권한대행을 맡게 되었다.
+
+                        박근혜 대통령에 대한 탄핵 심판은 헌법재판소의 판결에서 결정되고, 판결까지는 최대 180일이 걸리며, 박한철 전 소장(2017년 1월 31일 퇴임)이 퇴임한 관계로 8명의 재판관 중 6명 이상이 찬  성해야 탄핵이 최종 확정된다.
+                        2017년 3월 10일, 헌법재판소는 재판관 전원일치로 박근혜 대통령 탄핵 소추안을 인용하여 박근혜는 대통령직에서 파면되었다"
+                        />
+                </div>
+                <RealChat/>
+            </div>
+        );
+    }
+}
+
+export class Contents2 extends React.Component{
+
+    componentDidMount(e){
+
+        socket.on('connect', function(){
+            socket.emit('guestjoin', 'Choi');
+        });
+
+    }
+
+    render(){
+        return(
+            <div>
+                <div style = {{marginLeft : '100px'}}>
+                    <ContentsCard
+                        title = "최순실 게이트"
+                        value = {CONFIG.backendUrl + "img/choi.jpg"}
+                        text = ""
+                        />
+                </div>
+                <RealChat/>
+            </div>
+        );
+    }
+}
+
+export class Contents3 extends React.Component{
+
+    componentDidMount(e){
+
+        socket.on('connect', function(){
+            socket.emit('guestjoin', 'Kim');
+        });
+
+    }
+
+    render(){
+        return(
+            <div>
+                <div style = {{marginLeft : '100px'}}>
+                    <ContentsCard
+                        title = "김정남 암살"
+                        value = {CONFIG.backendUrl + "img/kim.jpg"}
+                        text = ""
+                        />
+                </div>
+                <RealChat/>
+            </div>
+        );
+    }
+}

@@ -68,6 +68,7 @@ app.get('*', function(req, res) {
 
 /*Sockets*/
 var usernames = [];
+var rooms = ['Park', 'Choi', 'Kim'];
 
 io.sockets.on('connection', function(socket){
 
@@ -102,14 +103,14 @@ io.sockets.on('connection', function(socket){
         socket.room = roomname;
         usernames[username] = username;
         socket.join(roomname);
-        socket.emit('servernoti', 'green', 'you has connect Babble');
+        socket.emit('servernoti', 'green', 'you has connect ' + roomname);
         var userlist = new Array();
         for( var name in usernames ){
             userlist.push(usernames[name]);
         }
         io.sockets.in(socket.room).emit('updateuser', userlist);
         socket.broadcast.to(roomname).emit('servernoti', 'green', username + ' has connect to ' + roomname);
-        if( roomname != 'lobby')
+        if( roomname != 'Babble')
         socket.emit('updaterooms', rooms, roomname);
     });
 
