@@ -15,15 +15,6 @@ class Authentication extends React.Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
-    componentWillMount(){
-
-        if (self.name != 'reload') {
-            self.name = 'reload';
-            self.location.reload(true);
-        }else
-        self.name = '';
-    }
-
     handleKeyPress(e) {
         if(e.charCode==13) {
             if(this.props.mode) {
@@ -115,7 +106,7 @@ class Authentication extends React.Component {
                         {inputBoxes}
                         <a className="waves-effect blue-grey darken-4 btn" onClick={this.handleLogin}>SUBMIT</a>
                     </div>
-                    <div className = "row center" style = {{width : 'auto'}}>
+                    <div className = "row center" style = {{width : 'auto', display : 'none'}}>
                         <div className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                         <a href="#" onClick={this.signOut}>Sign Out</a>
                     </div>
