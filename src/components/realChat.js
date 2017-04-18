@@ -101,8 +101,21 @@ export class Contents1 extends React.Component{
 
     componentDidMount(e){
 
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+        let loginData = getCookie('key');
+
+        if(typeof loginData === "undefined") return;
+
+        loginData = JSON.parse(atob(loginData));
+
         socket.on('connect', function(){
             socket.emit('guestjoin', 'Park');
+            socket.emit('userjoin', loginData.userid);
         });
 
     }
@@ -132,8 +145,21 @@ export class Contents2 extends React.Component{
 
     componentDidMount(e){
 
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+        let loginData = getCookie('key');
+
+        if(typeof loginData === "undefined") return;
+
+        loginData = JSON.parse(atob(loginData));
+
         socket.on('connect', function(){
             socket.emit('guestjoin', 'Choi');
+            socket.emit('userjoin', loginData.userid);
         });
 
     }
@@ -158,8 +184,21 @@ export class Contents3 extends React.Component{
 
     componentDidMount(e){
 
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+        let loginData = getCookie('key');
+
+        if(typeof loginData === "undefined") return;
+
+        loginData = JSON.parse(atob(loginData));
+
         socket.on('connect', function(){
             socket.emit('guestjoin', 'Kim');
+            socket.emit('userjoin', loginData.userid);
         });
 
     }

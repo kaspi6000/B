@@ -31,7 +31,7 @@ class Home extends React.Component {
             <div>
                 <div className = "intro" style = {{backgroundImage : 'url(' + imgUrl.backImg + ')'}}>
                     <div className="intro-body">
-                        <h1 className="brand-heading">babble.chat</h1>
+                        <h1 className="brand-heading">babble.kr</h1>
                         <p className="intro-text">다양한 사람들과 당신의 의견을 공유하세요.</p>
                         <a href="#topic" className="btn btn-circle page-scroll">
                             <i className="material-icons">expand_more</i>

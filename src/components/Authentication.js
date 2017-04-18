@@ -76,21 +76,23 @@ class Authentication extends React.Component {
                 <div className="input-field col s12 userid">
                     <label>Username</label>
                     <input
-                    name="userid"
-                    type="text"
-                    className="validate"
-                    onChange={this.handleChange}
-                    value={this.state.userid}/>
+                        name="userid"
+                        type="text"
+                        className="validate"
+                        onChange={this.handleChange}
+                        value={this.state.userid}
+                    />
                 </div>
                 <div className="input-field col s12">
                     <label>Password</label>
                     <input
-                    name="password"
-                    type="password"
-                    className="validate"
-                    onChange={this.handleChange}
-                    value={this.state.password}
-                    onKeyPress={this.handleKeyPress}/>
+                        name="password"
+                        type="password"
+                        className="validate"
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        onKeyPress={this.handleKeyPress}
+                    />
                 </div>
             </div>
         );

@@ -59,8 +59,6 @@ app.use(session({
     })
 }));
 
-console.log(session);
-
 app.get('*', function(req, res) {
     res.sendFile(path.resolve(__dirname, '../../index.html'));
     console.log('Cookies: ', req.cookies);
@@ -74,8 +72,6 @@ io.sockets.on('connection', function(socket){
 
     socket.on('sendmsg', function(data){
         io.sockets.in(socket.room).emit('recvmsg', socket.username, data);
-        console.log(data);
-        console.log(socket.username);
     });
 
     var claim = function(name){
@@ -97,18 +93,26 @@ io.sockets.on('connection', function(socket){
         return name;
     };
 
-    socket.on('guestjoin', function(roomname){
-        var username = getGuestName();
+    socket.on('userjoin', function(username){
         socket.username = username;
+        socket.join(username);
+    });
+
+    /*userlist update*/
+    /*var userlist = new Array();
+    for( var name in usernames ){
+        userlist.push(usernames[name]);
+    }
+    io.sockets.in(socket.room).emit('updateuser', userlist);*/
+
+    socket.on('guestjoin', function(roomname, username){
+
         socket.room = roomname;
-        usernames[username] = username;
+
         socket.join(roomname);
+
         socket.emit('servernoti', 'green', 'you has connect ' + roomname);
-        var userlist = new Array();
-        for( var name in usernames ){
-            userlist.push(usernames[name]);
-        }
-        io.sockets.in(socket.room).emit('updateuser', userlist);
+
         socket.broadcast.to(roomname).emit('servernoti', 'green', username + ' has connect to ' + roomname);
         if( roomname != 'Babble')
         socket.emit('updaterooms', rooms, roomname);
