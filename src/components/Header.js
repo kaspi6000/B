@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import CONFIG from '../models/m-config';
+import Mailto from 'react-mailto';
 
 /*Material Drawer*/
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -9,11 +10,12 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import Avatar from 'material-ui/Avatar';
+
 import SocialPersonadd from 'material-ui/svg-icons/social/person-add';
 import SocialPerson from 'material-ui/svg-icons/social/person';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
-import Subheader from 'material-ui/Subheader';
-import Avatar from 'material-ui/Avatar';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 
 /*Material Dialog*/
@@ -101,29 +103,10 @@ class Header extends React.Component {
                         <UserDialog />
                         <Subheader>Connect List</Subheader>
                         <MenuItem
-                            primaryText=""
-                            leftAvatar={<Avatar src="" />}
-                            rightIcon={<CommunicationChatBubble />}
-                        />
-                        <MenuItem
-                            primaryText=""
-                            leftAvatar={<Avatar src="" />}
-                            rightIcon={<CommunicationChatBubble />}
-                        />
-                        <MenuItem
-                            primaryText=""
-                            leftAvatar={<Avatar src="" />}
-                            rightIcon={<CommunicationChatBubble />}
-                        />
-                        <MenuItem
-                            primaryText=""
-                            leftAvatar={<Avatar src="" />}
-                            rightIcon={<CommunicationChatBubble />}
-                        />
-                        <MenuItem
-                            primaryText=""
-                            leftAvatar={<Avatar src="" />}
-                            rightIcon={<CommunicationChatBubble />}
+                            style = {{textAlign : 'center'}}
+                            primaryText="Keyongill Kang"
+                            leftAvatar={<Avatar src={CONFIG.backendUrl + "img/avatar.svg"} />}
+                            rightIcon={<Mailto email = "kaspi6000@gmail.com" obfuscate = {true}><CommunicationChatBubble style = {{marginLeft : '-15px'}} /></Mailto>}
                         />
                     </Drawer>
             </li></div>

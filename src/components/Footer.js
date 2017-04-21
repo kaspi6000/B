@@ -9,7 +9,7 @@ class Footer extends React.Component{
                     <ul>
                         <li><Link to = "/about">About</Link></li>
                         <li><Link to = "/feedback">FeedBack</Link></li>
-                        <li className="copy">© babble.chat 2017</li>
+                        <li className="copy">© babble.kr 2017</li>
                     </ul>
                 </div>
             </div>
