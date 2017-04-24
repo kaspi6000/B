@@ -101,12 +101,12 @@ class Header extends React.Component {
                         <MenuItem primaryText="Favorite List" leftIcon={<ActionGrade />} />
                         <MenuItem primaryText="Person Add" leftIcon={<SocialPersonadd />} />
                         <UserDialog />
-                        <Subheader>Connect List</Subheader>
+                        <Subheader>Connect</Subheader>
                         <MenuItem
                             style = {{textAlign : 'center'}}
-                            primaryText="Keyongill Kang"
-                            leftAvatar={<Avatar src={CONFIG.backendUrl + "img/avatar.svg"} />}
-                            rightIcon={<Mailto email = "kaspi6000@gmail.com" obfuscate = {true}><CommunicationChatBubble style = {{marginLeft : '-15px'}} /></Mailto>}
+                            primaryText="BABBLE"
+                            leftAvatar={<Avatar src={CONFIG.backendUrl + "img/B.jpg"} />}
+                            rightIcon={<Mailto email = "kaspi6000@gmail.com" obfuscate = {true}><i className="material-icons menuicon" >email</i></Mailto>}
                         />
                     </Drawer>
             </li></div>

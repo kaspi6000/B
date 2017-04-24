@@ -25,12 +25,12 @@ body {
 }
 
 .intro .intro-body .brand-heading {
-    font-size: 40px;
+    font-size: 80px;
 }
 
 .intro .intro-body .intro-text {
     font-size: 18px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 @media(min-width:768px) {
@@ -240,4 +240,10 @@ input {
     border-bottom : 0;
     margin-top: 20px;
     padding: 5px;
+}
+
+.menuicon {
+    margin-left: -15px;
+    margin-top: -20px;
+    color: gray;
 }
