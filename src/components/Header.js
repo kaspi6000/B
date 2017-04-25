@@ -129,6 +129,7 @@ class Header extends React.Component {
        );
 
         return (
+            <div>
             <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
                 <div className = "navbar-fixed">
                     <nav>
@@ -147,6 +148,7 @@ class Header extends React.Component {
                     </nav>
                 </div>
             </MuiThemeProvider>
+            </div>
         );
     }
 }
