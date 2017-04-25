@@ -71,19 +71,23 @@ class Header extends React.Component {
         loginData = JSON.parse(atob(loginData));
 
         const loginButton = (
+            <div>
             <li>
                 <Link to="/login">
                     <i className="material-icons">vpn_key</i>
                 </Link>
             </li>
+            </div>
         );
 
         const logoutButton = (
+            <div>
             <li>
                 <a onClick={this.props.onLogout}>
                     <i className="material-icons">lock_open</i>
                 </a>
             </li>
+            </div>
         );
 
         const status = (
