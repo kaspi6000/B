@@ -100,7 +100,7 @@ class Header extends React.Component {
                         <Subheader>User Info</Subheader>
                         <MenuItem primaryText="Favorite List" leftIcon={<ActionGrade />} />
                         <MenuItem primaryText="Person Add" leftIcon={<SocialPersonadd />} />
-                        <UserDialog />
+                        
                         <Subheader>Connect</Subheader>
                         <MenuItem
                             style = {{textAlign : 'center'}}
@@ -147,70 +147,6 @@ class Header extends React.Component {
                     </nav>
                 </div>
             </MuiThemeProvider>
-        );
-    }
-}
-
-class UserDialog extends React.Component{
-
-    constructor(props){
-        super(props);
-
-        this.state = {
-            open : false,
-        };
-
-        this.handleOpen = this.handleOpen.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-    }
-
-    handleOpen(){
-        this.setState({open: true});
-    };
-
-    handleClose(){
-        this.setState({open: false});
-    };
-
-    render(){
-
-        function getCookie(name) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + name + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-        }
-
-        let loginData = getCookie('key');
-
-        if(typeof loginData === "undefined") return;
-
-        loginData = JSON.parse(atob(loginData));
-
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                primary={true}
-                onTouchTap={this.handleClose}
-            />
-        ];
-
-        return(
-            <div>
-                <MenuItem primaryText="Personal Info" leftIcon={<SocialPerson />} onTouchTap={this.handleOpen} />
-                <Dialog
-                    title="Your Information"
-                    actions={actions}
-                    modal={false}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}
-                >
-                    <ul>
-                        <li>ID : {loginData.userid}</li>
-                        <li>E-mail : </li>
-                        <li>Gender : </li>
-                    </ul>
-                </Dialog>
-            </div>
         );
     }
 }
