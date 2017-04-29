@@ -73,10 +73,10 @@ class App extends React.Component {
         /* Check whether current route is login or register using regex */
         let re = /(login|register)/;
         let isAuth = re.test(this.props.location.pathname);
+        /*{isAuth ? undefined : <Header isLoggedIn={this.props.status.isLoggedIn} onLogout={this.handleLogout}/>}*/
 
         return (
             <div>
-                /*{isAuth ? undefined : <Header isLoggedIn={this.props.status.isLoggedIn} onLogout={this.handleLogout}/>}*/
                 <Header isLoggedIn = {this.props.status.isLoggedIn} onLogout = {this.handleLogout} />
                 <div>
                 { this.props.children }
