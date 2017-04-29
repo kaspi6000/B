@@ -76,7 +76,8 @@ class App extends React.Component {
 
         return (
             <div>
-                {isAuth ? undefined : <Header isLoggedIn={this.props.status.isLoggedIn} onLogout={this.handleLogout}/>}
+                /*{isAuth ? undefined : <Header isLoggedIn={this.props.status.isLoggedIn} onLogout={this.handleLogout}/>}*/
+                <Header isLoggedIn = {this.props.status.isLoggedIn} onLogout = {this.handleLogout} />
                 <div>
                 { this.props.children }
                 </div>
