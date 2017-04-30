@@ -1,7 +1,7 @@
 const CONFIG = {
 
-    siteUrl     : 'http://52.90.153.72:8080/',
-    backendUrl  : 'http://52.90.153.72:3000/',
+    siteUrl     : 'http://54.158.92.100:8080/',
+    backendUrl  : 'http://54.158.92.100:3000/',
 
 };
 
