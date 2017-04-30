@@ -2,7 +2,7 @@ import React from 'react';
 import io from 'socket.io-client';
 import CONFIG from '../models/m-config.js';
 
-let socket = io.connect('http://54.158.92.100:3000', {transports : ['websocket', 'polling']});
+let socket = io.connect('http://34.192.224.66:3000', {transports : ['websocket', 'polling']});
 
 class RealChat extends React.Component {
 

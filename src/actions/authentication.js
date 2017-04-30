@@ -26,7 +26,7 @@ export function loginRequest(userid, password) {
         dispatch(login());
 
         // API REQUEST
-        return axios.post('http://54.158.92.100:3000/signin', { userid, password })
+        return axios.post('http://34.192.224.66:3000/signin', { userid, password })
         .then((response) => {
             // SUCCEED
             dispatch(loginSuccess(userid));
@@ -61,7 +61,7 @@ export function registerRequest(userid, password) {
         // Inform Register API is starting
         dispatch(register());
 
-        return axios.post('http://54.158.92.100:3000/signup', { userid, password })
+        return axios.post('http://34.192.224.66:3000/signup', { userid, password })
         .then((response) => {
             dispatch(registerSuccess());
         }).catch((error) => {
@@ -94,7 +94,7 @@ export function getStatusRequest() {
         // inform Get Status API is starting
         dispatch(getStatus());
 
-        return axios.get('http://54.158.92.100:3000/getinfo')
+        return axios.get('http://34.192.224.66:3000/getinfo')
         .then((response) => {
             dispatch(getStatusSuccess(response.data.info.userid));
         }).catch((error) => {
@@ -124,7 +124,7 @@ export function getStatusFailure() {
 
 export function logoutRequest() {
     return (dispatch) => {
-        return axios.post('http://54.158.92.100:3000/logout')
+        return axios.post('http://34.192.224.66:3000/logout')
         .then((response) => {
             dispatch(logout());
         });
