@@ -66,7 +66,7 @@ class Header extends React.Component {
 
         let loginData = getCookie('key');
 
-        if(typeof loginData === "undefined") return;
+        
 
         loginData = JSON.parse(atob(loginData));
 
@@ -157,7 +157,7 @@ class Header extends React.Component {
     }
 }
 
-class UserDialog extends React.Component{
+export class UserDialog extends React.Component{
 
     constructor(props){
         super(props);
@@ -188,7 +188,7 @@ class UserDialog extends React.Component{
 
         let loginData = getCookie('key');
 
-        if(typeof loginData === "undefined") return;
+        
 
         loginData = JSON.parse(atob(loginData));
 
