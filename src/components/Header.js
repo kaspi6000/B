@@ -58,18 +58,6 @@ class Header extends React.Component {
 
     render() {
 
-        function getCookie(name) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + name + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-        }
-
-        let loginData = getCookie('key');
-
-        
-
-        loginData = JSON.parse(atob(loginData));
-
         const loginButton = (
             <div>
             <li>
@@ -188,7 +176,7 @@ export class UserDialog extends React.Component{
 
         let loginData = getCookie('key');
 
-        
+        if(typeof loginData === "undefined") return;
 
         loginData = JSON.parse(atob(loginData));
 
