@@ -29,7 +29,7 @@ class Home extends React.Component {
 
         return (
             <div>
-                <div className = "intro" style = {{backgroundImage : 'url(' + imgUrl.backImg + ')'}}>
+                <div className = "intro" style = {{backgroundImage : 'url(' + imgUrl.backImg + ')'}} id = "page-top">
                     <div className="intro-body">
                         <h1 className="brand-heading">babble.kr</h1>
                         <p className="intro-text">다양한 사람들과 당신의 의견을 공유하세요.</p>
@@ -41,6 +41,9 @@ class Home extends React.Component {
                 <div id = "topic">
                     <BestTopic/>
                 </div>
+                <a href="#page-top" className="topScroll page-scroll btn-circle btn" style = {{color : 'black'}}>
+                    <i className="material-icons">expand_less</i>
+                </a>
             </div>
         );
     }

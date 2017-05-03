@@ -143,7 +143,6 @@ class Header extends React.Component {
                             <Link to="/" className="brand-logo center">BABBEL</Link>
                             <ul>
                                 { this.props.isLoggedIn ? status : registerStatus}
-                                <li><a><i className="material-icons">search</i></a></li>
                             </ul>
                             <div className="right">
                                 <ul>

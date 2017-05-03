@@ -5,9 +5,9 @@ import { Link } from 'react-router';
 class ContentsCard extends React.Component {
     render(){
         return(
-            <div style = {{left : '0px', right : '0px', marginLeft : 'auto', marginRight : '10px', width : '300px', height : 'auto', marginBottom : '100px', float : 'left'}} className="card small">
+            <div style = {{left : '0px', right : '0px', margin : '10px 10px 10px 10px', maxWidth : '250px', height : 'auto', marginBottom : '100px', float : 'left'}} className="card small">
                 <div className="card-image waves-effect waves-block waves-light">
-                    <img style = {{maxWidth : 300, height : 300}} className="activator" src={this.props.value}/>
+                    <img style = {{maxWidth : 250, height : 300}} className="activator" src={this.props.value}/>
                 </div>
                 <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">{this.props.title}<i className="material-icons right">more_vert</i></span>
