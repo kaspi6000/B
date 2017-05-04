@@ -4,11 +4,11 @@ import Mailto from 'react-mailto';
 class Feedback extends React.Component{
     render(){
         return(
-            <div>
-                <div className = "title">
+            <div className = "title">
+                <div className = "title-body">
                     <div className = "title-font">FEEDBACK</div>
                 </div>
-                <div>
+                <div className = "container-main">
                     <div className = "container-title">
                         문의 또는 건의 하고 싶으신가요?
                     </div>

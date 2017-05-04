@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 class Footer extends React.Component{
     render(){
         return(
-            <div>
+            <div className = "foot-m">
                 <div className="foot">
                     <ul>
                         <li><Link to = "/about">About</Link></li>

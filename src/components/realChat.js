@@ -60,7 +60,7 @@ class RealChat extends React.Component {
     render(){
 
         return(
-            <div>
+            <div className = "chat-m">
                 <div className = "chat">
                     <div id="scrolldiv" className = "chat-messages">
                         <div id="conversation" className = "chat-message"></div>
@@ -77,9 +77,10 @@ class RealChat extends React.Component {
 class ContentsCard extends React.Component {
     render(){
         return(
-            <div style = {{maxWidth : '250px', maxHeight : '500px', left : '0px', right : '0px', marginRight: 'auto', marginTop : '50px', align : 'center', margin : '10px 10px 10px 10px'}} className="card">
+            <div className = "card-m">
+            <div className = "card card-t">
                 <div className="card-image waves-effect waves-block waves-light">
-                    <img style = {{maWidth : '250px', height : '420px'}} className="activator" src={this.props.value}/>
+                    <img style = {{maxWidth : '350px', height : '420px'}} className="activator" src={this.props.value}/>
                 </div>
                 <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">{this.props.title}<i className="material-icons right">more_vert</i></span>
@@ -89,6 +90,7 @@ class ContentsCard extends React.Component {
                     <span className="card-title grey-text text-darken-4">{this.props.title}<i className="material-icons right">close</i></span>
                     <p>{this.props.text}</p>
                 </div>
+            </div>
             </div>
         );
     }

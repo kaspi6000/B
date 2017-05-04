@@ -99,7 +99,7 @@ class Header extends React.Component {
                 </div>
                     <Drawer
                         docked={false}
-                        width={300}
+                        maxWidth={300}
                         open={this.state.open}
                         onRequestChange={(open) => this.setState({open})}
                     >

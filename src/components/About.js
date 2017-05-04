@@ -5,11 +5,11 @@ class About extends React.Component{
     render(){
 
         return(
-            <div>
-                <div className = "title">
+            <div className = "title">
+                <div className = "title-body">
                     <div className = "title-font">ABOUT</div>
                 </div>
-                <div>
+                <div className = "container-main">
                     <div className = "container-title">
                         Q. Babble 이란 ?
                     </div>
