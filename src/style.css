@@ -103,12 +103,16 @@ body {
         padding-right: 10px;
     }
 
-    .card-m .card-t {
-        margin-left: 10px;
+    .card-m {
+        margin-right: 30px;
     }
 
     .chat-m .chat {
         margin: 10px 10px 10px 10px;
+    }
+
+    .chat-m .chat .chat-messages {
+        height: 100px;
     }
 
 }
